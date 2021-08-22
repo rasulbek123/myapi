@@ -1,8 +1,8 @@
 package com.example.myapi
 
-import com.example.myapi.model.UserData
+import com.example.myapi.model.Result
 
 interface NetworkListener {
-    fun onUserDataResponse(models:List<UserData>?)
+    fun onUserDataResponse(models:Result?)
     fun onUserDataFailure(message:String?)
 }

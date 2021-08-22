@@ -7,18 +7,18 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class ApiClient {
     companion object{
-        private var retrofit: Retrofit? = null
-        private var gson : Gson? = null
+        private lateinit var retrofit: Retrofit
+        private lateinit var gson : Gson
 
-        fun GetClient():Retrofit?{
-            if(gson == null){
+        fun getClient():Retrofit{
+            if(!::gson.isInitialized){
                 gson = GsonBuilder()
                     .setLenient()
                     .create()
             }
-            if(retrofit == null){
+            if(!::retrofit.isInitialized){
                 retrofit = Retrofit.Builder()
-                    .baseUrl("https://codeforces.com/")
+                    .baseUrl("https://codeforces.com/api/")
                     .addConverterFactory(GsonConverterFactory.create(gson))
                     .build()
             }
